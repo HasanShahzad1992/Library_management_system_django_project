@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .list-group-item{background-color: blueviolet}
+        .list-group-item:hover{background-color: brown}
+        .basit{text-decoration: none;color:white}
+        body{background-color: aqua}
+        .carousel-inner{height: 400px}
+        .picture_class{height: 350px;display:block;margin: 0 auto}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="load_entry_library_system_home">{{ user_name }}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="logout_library_system">Logout</a>
+
+    </div>
+  </div>
+</nav>
+<!-- Carousel -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+  <!-- Indicators/dots -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+  </div>
+
+  <!-- The slideshow/carousel -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://files.codingninjas.in/article_images/bootstrap-carousel-plugin-0-1674641403.webp" alt="Los Angeles" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i0.wp.com/webdevpuneet.com/wp-content/uploads/2019/09/Screenshot_84.png?fit=820%2C345&ssl=1" alt="Chicago" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="https://i.ytimg.com/vi/Esv4AqWC72E/sddefault.jpg" alt="New York" class="d-block w-100">
+    </div>
+  </div>
+
+  <!-- Left and right controls/icons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+<p>entry home page</p>
+{% if user_name %}
+    <p>welcome {{ user_name }}</p>
+{% endif %}
+<form action="/upload_picture_library/{{ userid }}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>
+        Please upload your profile picture
+    </label>
+    <input type="file" name="picture_to_be_uploaded">
+    <input type="submit" value="upload_picture">
+</form>
+{% if picture_key %}
+    <img src="{{ picture_key }}" alt="no_picture" class="picture_class rounded-circle">
+{% endif %}
+<ul class="list-group">
+ <li class="list-group-item">
+     <a href="load_customer_book_combined_add_html" class="basit">
+    add_customer_book_combined
+     </a>
+ </li>
+  <li class="list-group-item">
+    <a href="load_customer_book_combined_update_html" class="basit">
+    load_customer_book_combined_update_html
+    </a>
+  </li>
+  <li class="list-group-item">
+      <a href="view_customer_book_combined_html" class="basit">
+    view_customer_book_combined
+      </a>
+  </li>
+</ul>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
